@@ -164,17 +164,19 @@
               </div>
             </div>
           </div>
+          <p>
           In the above episode, we can see that the NoGPS agent keeps moving in circles waiting for human and then when it is
           following the human, finally it collides while trying to avoid, ending the episode very soon. In contract, the dynamic
           additive agent trained with curriculum learning is able to find the human quickly, follow it for longer while avoiding
           collisions. Although, the episode ends when it gets stuck within walls and times out.
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-  <section class="hero is-small is-light">
+  <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <!-- Paper video. -->
@@ -204,12 +206,14 @@
               </div>
             </div>
           </div>
+          </p>
           In the above episode, we see that the NoGPS agent and dynamic additive LastGPS agent perform similarly and are able to
           find the human and follow for a long duration. However, the zero GPS additive agent collides pretty early in the
           episode, although it is still able to find the human reasonably early in the episode. This suggests that ZeroGPS is
           harder compared to LastGPS setting as the agent has no information after the first step of any GPS sensor. NoGPS agent
           stays in place rotating and waiting for human, while the dynamic additive LastGPS agent has some navigation ability and
           finds the human earlier than NoGPS.
+          </p>
         </div>
       </div>
     </div>
@@ -246,7 +250,9 @@
               </div>
             </div>
           </div>
+          </p>
           In the above episode, the agent fails pretty early for NoGPS due to collision and the agent keeps rotating initially without trying to navigate the human. In comparison, the additive ZeroGPS and the dynamic additive LastGPS agents do a good job of finding the human (going right instead of left like NoGPS) and then follow the human for a good number of steps, albeit ending in collision.
+          </p>
         </div>
       </div>
     </div>
