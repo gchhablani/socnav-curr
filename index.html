@@ -192,7 +192,7 @@
               <li><b>ZeroGPS</b>: Providing coordinates (0, 0) instead of GPS data.</li>
               <li><b>LastGPS</b>: Utilizing the last known GPS location.</li>
             </ul>
-            <br><br>
+            <br>
             In the absence of human GPS information, the success rate of finding significantly decreases [11]. Thus, we propose a
             curriculum-based approach to adaptively train the agent, hypothesizing that a policy relying consistently on GPS
             information lacks adaptability.
@@ -213,6 +213,7 @@
               <li><code>Multiplicative</code>: Doubling or halving the current GPS frequency based on finding success rate.</li>
               <li><code>Dynamic Additive</code>: Adding or subtracting a dynamic value scaling with training finding success rate.</li>
             </ul>
+            <br>
             By employing this methodology, we aim to train an adaptive agent capable of navigating SocialNav tasks with limited
             reliance on GPS information.
           </p>
