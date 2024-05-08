@@ -144,7 +144,6 @@
 <section class="section hero is-small">
   <div class="hero-body">
     <div class="container is-max-desktop">
-      <!-- Paper video. -->
       <div class="columns is-centered has-text-centered has-text-justified">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Introduction</h2>
@@ -153,10 +152,12 @@
             reinforcement learning have been applied to tackle this challenge. However, many existing approaches rely on the
             assumption that the GPS location of the goal is always available, which is often impractical in real-world scenarios.
             <br>
+            <br>
             In this work, we introduce a novel approach aimed at addressing this limitation. Building upon the Social Navigation
             (SocialNav) task proposed by Habitat 3.0, where an agent navigates indoor environments alongside humans, we propose a
             curriculum-based learning strategy. This strategy gradually introduces the agent to increasingly challenging scenarios
             with infrequent access to human GPS locations, mirroring real-world conditions.
+            <br>
             <br>
             Our approach draws inspiration from curriculum learning techniques, which start with simpler versions of a task and
             progressively increase complexity. By adapting this concept to focus on human GPS availability, we demonstrate that our
@@ -183,30 +184,30 @@
             model the Social Navigation (SocialNav) task as a partially-observable Markov Decision Process. Our observation space
             comprises four simulation sensors: an arm depth camera, an arm RGB camera, a humanoid detector, and a humanoid GPS
             sensor.
-            <br>
+            <br><br>
             To explore scenarios with limited GPS availability, we introduce two strategies for representing human GPS locations
             when unavailable:
-            <br>
+            <br><br>
             <ul>
               <li><b>ZeroGPS</b>: Providing coordinates (0, 0) instead of GPS data.</li>
               <li><b>LastGPS</b>: Utilizing the last known GPS location.</li>
             </ul>
-            <br>
+            <br><br>
             In the absence of human GPS information, the success rate of finding significantly decreases [11]. Thus, we propose a
             curriculum-based approach to adaptively train the agent, hypothesizing that a policy relying consistently on GPS
             information lacks adaptability.
-            <br>
+            <br><br>
             Our curriculum design gradually reduces the frequency of GPS availability based on predetermined upper and lower success
             rate thresholds. This process aims to challenge the agent progressively until it can perform optimally without GPS
             assistance. We set the curriculum level K in the range of [1, 1500], determining the interval in the episode where the
             agent has access to current GPS sensor data.
-            <br>
+            <br><br>
             Training spans 300 million steps, with curriculum adjustments made every 10 million steps. We incorporate a warm-up
             phase of 10 million steps to ensure the agent attains satisfactory performance under full GPS conditions. Upper success
             rate thresholds are set at 0.9, while lower thresholds vary from 0.8 to 0.88 across training phases.
-            <br>
+            <br><br>
             To update the curriculum, we explore three approaches:
-            <br>
+            <br><br>
             <ul>
               <li><code>Additive</code>: Incrementing (+50) or decrementing (-25) a fixed value based on finding success rate.</li>
               <li><code>Multiplicative</code>: Doubling or halving the current GPS frequency based on finding success rate.</li>
