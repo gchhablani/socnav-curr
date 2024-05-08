@@ -52,11 +52,11 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Social Navigation with Sparse GPS via Curriculum-Induced RL</h1>
+            <h1 class="title is-1 publication-title">Curriculum Learning for GPS-Free Indoor Social Navigation</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Gunjan Chhablani</a><sup>*</sup>,</span>
+                <a href="https://gchhablani.github.io/" target="_blank">Gunjan Chhablani</a><sup>*</sup>,</span>
                 <span class="author-block">
                   <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Madhura Keshava Ummettuguli</a><sup>*</sup>,</span>
                   <span class="author-block">
@@ -131,7 +131,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            In real-world scenarios, tasks involving human-robot interaction often demand seamless collaboration between the two within indoor settings. Habitat 3.0 introduced a variant of Social Navigation where agents are tasked with finding and tracking humans and following them while avoiding collisions. Their baselines suggest that achieving this task is feasible through sensor-to-action end-to-end RL policies, leveraging human GPS data provided to the agent at each time step. However, this approach is impractical outside controlled environments, posing a bridge between simulated and real-world social emodied agents. Indoor GPS sensors are rarely reliable in real-life environments and it may be impractical to provide GPS for each human in the indoor environment. In this work, we propose to tackle the issue of realistic social navigation by relaxing the requirement of human GPS location at every time step. We design a curriculum learning strategy for training a sensor-to-action policy capable of finding and tracking humans with sparse or no reliance on human GPS observations. Our experiments demonstrate the effectiveness of our curriculum strategy, achieving comparable performance to the baselines using just one GPS observation at the episode's start. Moreover, our curriculum strategy is more sample efficient than no GPS scenario, demonstrating that the curriculum is indeed key to achieving optimal performance.
+            Tasks involving human-robot interaction demand seamless collaboration between the two within indoor settings. Habitat 3.0 [11] introduced a novel Social Navigation task where agents find, track, and follow humans while avoiding collisions. Their baselines show that performance relies heavily on human GPS availability. However, indoor GPS sensors are rarely reliable in real-life and it may be impractical to provide GPS for every human in the scene. In this work, we tackle the issue of realistic social navigation by relaxing the human GPS requirement at every time step. We achieve this via a curriculum learning strategy for training an RL policy capable of finding and tracking humans with sparse or no reliance on human GPS observations. Our experiments demonstrate the effectiveness of our curriculum strategy, achieving comparable performance to the baselines with lesser samples, using a single GPS observation at the beginning of the episode. The project website and videos can be found at gchhablani.github.io/socnav-curr.
           </p>
         </div>
       </div>
@@ -141,7 +141,7 @@
 <!-- End paper abstract -->
 
   <!-- Youtube video -->
-<section class="hero is-small">
+<section class="section hero is-small">
   <div class="hero-body">
     <div class="container">
       <!-- Paper video. -->
