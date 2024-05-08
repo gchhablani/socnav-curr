@@ -131,7 +131,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Tasks involving human-robot interaction demand seamless collaboration between the two within indoor settings. Habitat 3.0 [11] introduced a novel Social Navigation task where agents find, track, and follow humans while avoiding collisions. Their baselines show that performance relies heavily on human GPS availability. However, indoor GPS sensors are rarely reliable in real-life and it may be impractical to provide GPS for every human in the scene. In this work, we tackle the issue of realistic social navigation by relaxing the human GPS requirement at every time step. We achieve this via a curriculum learning strategy for training an RL policy capable of finding and tracking humans with sparse or no reliance on human GPS observations. Our experiments demonstrate the effectiveness of our curriculum strategy, achieving comparable performance to the baselines with lesser samples, using a single GPS observation at the beginning of the episode. The project website and videos can be found at gchhablani.github.io/socnav-curr.
+            Tasks involving human-robot interaction demand seamless collaboration between the two within indoor settings. Habitat 3.0 introduced a novel Social Navigation task where agents find, track, and follow humans while avoiding collisions. Their baselines show that performance relies heavily on human GPS availability. However, indoor GPS sensors are rarely reliable in real-life and it may be impractical to provide GPS for every human in the scene. In this work, we tackle the issue of realistic social navigation by relaxing the human GPS requirement at every time step. We achieve this via a curriculum learning strategy for training an RL policy capable of finding and tracking humans with sparse or no reliance on human GPS observations. Our experiments demonstrate the effectiveness of our curriculum strategy, achieving comparable performance to the baselines with lesser samples, using a single GPS observation at the beginning of the episode. The project website and videos can be found at gchhablani.github.io/socnav-curr.
           </p>
         </div>
       </div>
@@ -139,13 +139,40 @@
   </div>
 </section>
 <!-- End paper abstract -->
+<!--Introduction-->
+<section class="section hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <!-- Paper video. -->
+      <div class="columns is-centered has-text-centered has-text-justified">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Introduction</h2>
+          <p>
+            Embodied navigation in indoor environments poses a significant challenge in robotics and AI. Recent advancements in deep
+            reinforcement learning have been applied to tackle this challenge. However, many existing approaches rely on the
+            assumption that the GPS location of the goal is always available, which is often impractical in real-world scenarios.
+            <br>
+            In this work, we introduce a novel approach aimed at addressing this limitation. Building upon the Social Navigation
+            (SocialNav) task proposed by Habitat 3.0, where an agent navigates indoor environments alongside humans, we propose a
+            curriculum-based learning strategy. This strategy gradually introduces the agent to increasingly challenging scenarios
+            with infrequent access to human GPS locations, mirroring real-world conditions.
+            <br>
+            Our approach draws inspiration from curriculum learning techniques, which start with simpler versions of a task and
+            progressively increase complexity. By adapting this concept to focus on human GPS availability, we demonstrate that our
+            agent can achieve comparable performance to those with constant GPS access, reaching peak performance faster.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Youtube video -->
 <section class="section hero is-small">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <!-- Paper video. -->
-      <div class="columns is-centered has-text-centered has-text-justified"">
+      <div class="columns is-centered has-text-centered has-text-justified">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Evaluation Trajectories</h2>
           <div class="columns">
