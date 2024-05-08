@@ -139,6 +139,7 @@
   </div>
 </section>
 <!-- End paper abstract -->
+
 <!--Introduction-->
 <section class="section hero is-small">
   <div class="hero-body">
@@ -166,6 +167,60 @@
     </div>
   </div>
 </section>
+<!--End Introduction-->
+
+
+<!--Methodology-->
+<section class="section hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <!-- Paper video. -->
+      <div class="columns is-centered has-text-centered has-text-justified">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Methodology</h2>
+          <p>
+            In our methodology, we adopt the standard reinforcement learning (RL) framework, as utilized in prior research [11], to
+            model the Social Navigation (SocialNav) task as a partially-observable Markov Decision Process. Our observation space
+            comprises four simulation sensors: an arm depth camera, an arm RGB camera, a humanoid detector, and a humanoid GPS
+            sensor.
+            <br>
+            To explore scenarios with limited GPS availability, we introduce two strategies for representing human GPS locations
+            when unavailable:
+            <br>
+            <ul>
+              <li><b>ZeroGPS</b>: Providing coordinates (0, 0) instead of GPS data.</li>
+              <li><b>LastGPS</b>: Utilizing the last known GPS location.</li>
+            </ul>
+            <br>
+            In the absence of human GPS information, the success rate of finding significantly decreases [11]. Thus, we propose a
+            curriculum-based approach to adaptively train the agent, hypothesizing that a policy relying consistently on GPS
+            information lacks adaptability.
+            <br>
+            Our curriculum design gradually reduces the frequency of GPS availability based on predetermined upper and lower success
+            rate thresholds. This process aims to challenge the agent progressively until it can perform optimally without GPS
+            assistance. We set the curriculum level K in the range of [1, 1500], determining the interval in the episode where the
+            agent has access to current GPS sensor data.
+            <br>
+            Training spans 300 million steps, with curriculum adjustments made every 10 million steps. We incorporate a warm-up
+            phase of 10 million steps to ensure the agent attains satisfactory performance under full GPS conditions. Upper success
+            rate thresholds are set at 0.9, while lower thresholds vary from 0.8 to 0.88 across training phases.
+            <br>
+            To update the curriculum, we explore three approaches:
+            <br>
+            <ul>
+              <li><code>Additive</code>: Incrementing (+50) or decrementing (-25) a fixed value based on finding success rate.</li>
+              <li><code>Multiplicative</code>: Doubling or halving the current GPS frequency based on finding success rate.</li>
+              <li><code>Dynamic Additive</code>: Adding or subtracting a dynamic value scaling with training finding success rate.</li>
+            </ul>
+            By employing this methodology, we aim to train an adaptive agent capable of navigating SocialNav tasks with limited
+            reliance on GPS information.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Methodology-->
 
   <!-- Youtube video -->
 <section class="section hero is-small">
