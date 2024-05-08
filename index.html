@@ -179,7 +179,7 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Methodology</h2>
           <p>
-            In our methodology, we adopt the standard reinforcement learning (RL) framework, as utilized in prior research [11], to
+            In our methodology, we adopt the standard reinforcement learning (RL) framework, as utilized in Habitat 3.0, to
             model the Social Navigation (SocialNav) task as a partially-observable Markov Decision Process. Our observation space
             comprises four simulation sensors: an arm depth camera, an arm RGB camera, a humanoid detector, and a humanoid GPS
             sensor.
@@ -190,7 +190,7 @@
               <li> <b>ZeroGPS</b>: Providing coordinates (0, 0) instead of GPS data.</li>
               <li> <b>LastGPS</b>: Utilizing the last known GPS location.</li>
             <br>
-            In the absence of human GPS information, the success rate of finding significantly decreases [11]. Thus, we propose a
+            In the absence of human GPS information, the success rate of finding significantly decreases, as shown in Habitat 3.0 paper. Thus, we propose a
             curriculum-based approach to adaptively train the agent, hypothesizing that a policy relying consistently on GPS
             information lacks adaptability.
             <br><br>
@@ -217,7 +217,130 @@
     </div>
   </div>
 </section>
-<!--Methodology-->
+<!--Methodology ends-->
+
+<!--Experiments-->
+<section class="section hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <!-- Paper video. -->
+      <div class="columns is-centered has-text-centered has-text-justified">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Experiments</h2>
+          <h3 class="subtitle is-4">Metrics and Evaluation</h3>
+          <p>We assess our policies through 500 unseen episodes, utilizing evaluation metrics borrowed from prior work [11]. In
+            ZeroGPS evaluation, a fixed GPS observation of (0,0) is assumed at each step, while LastGPS receives only the initial
+            human GPS at every time step.</p>
+            <br>
+            <h3 class="subtitle is-4">Baselines</h3>
+            <p>We establish two baseline models: FullGPS (Human GPS observed at every timestep), and NoGPS (No GPS sensor).
+              Evaluation results depicted in the figure below reveal that while the NoGPS baseline achieves a respectable 0.92 evaluation
+              finding success (eval FS), its performance is inconsistent. Conversely, FullGPS consistently achieves near-perfect
+              performance with a 0.98 eval FS.</p>
+            <img src="static/images/fs_plot_eai_worshop.png" alt="Figure 1: Eval FS for best-performing curriculum policies">
+            <!-- <table>
+              <caption>Table 1: Evaluation results on checkpoints with the highest FS.</caption>
+              <thead>
+                <tr>
+                  <th>Experiment</th>
+                  <th>FS (↑)</th>
+                  <th>FR (↑)</th>
+                  <th>SPS (↑)</th>
+                  <th>CR (↓)</th>
+                  <th>R (↑)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>NoGPS</td>
+                  <td>0.92</td>
+                  <td>0.72</td>
+                  <td>0.52</td>
+                  <td>0.52</td>
+                  <td>6770.28</td>
+                </tr>
+                <tr>
+                  <td>FullGPS</td>
+                  <td>0.98</td>
+                  <td>0.68</td>
+                  <td>0.52</td>
+                  <td>0.59</td>
+                  <td>6079.23</td>
+                </tr>
+                <tr>
+                  <td>Mul (ZGPS)</td>
+                  <td>0.52</td>
+                  <td>0.06</td>
+                  <td>0.02</td>
+                  <td>0.40</td>
+                  <td>31.07</td>
+                </tr>
+                <tr>
+                  <td>Add (ZGPS)</td>
+                  <td>0.92</td>
+                  <td>0.66</td>
+                  <td>0.44</td>
+                  <td>0.60</td>
+                  <td>4941.44</td>
+                </tr>
+                <tr>
+                  <td>Dyn-Add (ZGPS)</td>
+                  <td>0.89</td>
+                  <td>0.60</td>
+                  <td>0.41</td>
+                  <td>0.63</td>
+                  <td>4784.58</td>
+                </tr>
+                <tr>
+                  <td>Mul-LGPS</td>
+                  <td>0.92</td>
+                  <td>0.63</td>
+                  <td>0.38</td>
+                  <td>0.64</td>
+                  <td>4044.00</td>
+                </tr>
+                <tr>
+                  <td>Dyn-Add-LGPS</td>
+                  <td>0.92</td>
+                  <td>0.65</td>
+                  <td>0.44</td>
+                  <td>0.62</td>
+                  <td>5364.39</td>
+                </tr>
+                <tr>
+                  <td>Add-LGPS</td>
+                  <td>0.91</td>
+                  <td>0.71</td>
+                  <td>0.51</td>
+                  <td>0.54</td>
+                  <td>6605.48</td>
+                </tr>
+              </tbody>
+            </table> -->
+            <br>
+            <h3 class="subtitle is-4">Zero GPS vs Last GPS</h3>
+            For brevity, we focus on the top two curriculum strategies in the figure above. <b>LastGPS</b> <code>Dyn-Add</code> outperforms <b>ZeroGPS</b> <code>Add</code>,
+            requiring fewer iterations for similar performance, indicating its higher sample efficiency. Table 1 confirms the
+            superior performance of <b>LastGPS</b> over <b>ZeroGPS</b>. This result likely stems from <b>ZeroGPS</b> needing to implicitly remember the
+            latest human GPS observation, whereas <b>LastGPS</b> continually receives the cached human GPS.
+            <br>
+            <h3 class="subtitle is-4">Additive vs Multiplicative vs Dynamic Additive</h3>
+            We observe that FS for <code>Add</code> and <code>Dyn-Add</code> reaches 0.92. <code>Mul</code> strategy performs poorly with <b>ZeroGPS</b> (0.52 FS)
+            but well with <b>LastGPS</b> (0.92 FS). If the difficulty updates too rapidly, as in <code>Mul</code>, it can exacerbate the learning curve.
+            Since <b>LastGPS</b> is easier than the <b>ZeroGPS</b> setting (see Section 3.3), the combination of <code>Mul</code> and <b>ZeroGPS</b> results in a
+            curriculum that is too difficult.
+            <br>
+            <h3 class="subtitle is-4">GPS vs Baselines</h3>
+            The figure illustrates that our best curriculum strategies (<code>Add-Curr</code> and <code>Dyn-Add-Curr-LGPS</code>) perform as well as the NoGPS
+            baseline but reach high performance early in training. We also observe more stable curves compared to the NoGPS baseline
+            towards the end of training, indicating that curriculum learning aids in developing a robust policy with minimal samples
+            while mitigating reliance on GPS availability.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Experiments end-->
 
   <!-- Youtube video -->
 <section class="section hero is-small">
